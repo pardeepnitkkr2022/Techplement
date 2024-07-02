@@ -25,7 +25,7 @@ async function fetchRandomQuote() {
 }
 
 // Get a random quote (from external API)
-app.get('/quote', async (req, res) => {
+app.get('/', async (req, res) => {
   
 
     
@@ -40,7 +40,7 @@ app.get('/quote', async (req, res) => {
 });
 
 // Adding a new quote
-app.post('/quote', (req, res) => {
+app.post('/', (req, res) => {
     const newQuote = {
         id: ++currentQuoteId,
         text: req.body.text
@@ -50,7 +50,7 @@ app.post('/quote', (req, res) => {
 });
 
 // Updating a quote
-app.put('/quote/:id', (req, res) => {
+app.put('/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const updatedText = req.body.text;
     const quote = quotes.find(q => q.id === id);
@@ -64,7 +64,7 @@ app.put('/quote/:id', (req, res) => {
 });
 
 // Deleting a quote by its id
-app.delete('/quote/:id', (req, res) => {
+app.delete('/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const quoteIndex = quotes.findIndex(q => q.id === id);
 
